@@ -55,6 +55,7 @@ cp config ~/.kube/
 10.0.0.10 (master)
 10.0.0.11 (node01)
 10.0.0.11 (node02)
+
 kubectl top nodes
 kubectl get po -n kube-system
 
