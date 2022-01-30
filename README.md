@@ -33,6 +33,7 @@ git clone https://github.com/scriptcamp/vagrant-kubeadm-kubernetes.git
 cd vagrant-kubeadm-kubernetes
 vagrant up
 vagrant ssh master
+vagrant ssh node01
 ```
 
 ## Set Kubeconfig file varaible.
@@ -56,8 +57,10 @@ cp config ~/.kube/
 10.0.0.11 (node02)
 kubectl top nodes
 kubectl get po -n kube-system
+
 #Deploy a sample Nginx app and see if you can access it over the nodePort.
 kubectl apply -f https://raw.githubusercontent.com/scriptcamp/kubeadm-scripts/main/manifests/sample-app.yaml
+
 http://10.0.0.11:32000
 ```
 
