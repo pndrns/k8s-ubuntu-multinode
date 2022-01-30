@@ -32,6 +32,7 @@ To provision the cluster, execute the following commands.
 git clone https://github.com/scriptcamp/vagrant-kubeadm-kubernetes.git
 cd vagrant-kubeadm-kubernetes
 vagrant up
+vagrant ssh master
 ```
 
 ## Set Kubeconfig file varaible.
@@ -48,10 +49,24 @@ or you can copy the config file to .kube directory.
 cp config ~/.kube/
 ```
 
+## Quick Test
+```shell
+10.0.0.10 (master)
+10.0.0.11 (node01)
+10.0.0.11 (node02)
+kubectl top nodes
+kubectl get po -n kube-system
+#Deploy a sample Nginx app and see if you can access it over the nodePort.
+kubectl apply -f https://raw.githubusercontent.com/scriptcamp/kubeadm-scripts/main/manifests/sample-app.yaml
+http://10.0.0.11:32000
+```
+
 ## Kubernetes Dashboard URL
 
 ```shell
+kubectl proxy
 http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=kubernetes-dashboard
+#use token from configs folder.
 ```
 
 ## Kubernetes login token
